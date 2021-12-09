@@ -14,16 +14,6 @@ def parse_vertical(vents, x1, x2, y1, y2):
 	for x in range(min(x1, x2), max(x1, x2) + 1):
 		vents[(x, y1)] += 1
 
-def parse_diagonal(vents, x1, x2, y1, y2):
-	x_step = 1 if x1 < x2 else -1
-	y_step = 1 if y1 < y2 else -1
-
-	for x, y in zip(
-		range(x1, x2 + x_step, x_step),
-		range(y1, y2 + y_step, y_step)
-		):
-		vents[(x, y)] += 1
-
 def part_1(data):
 	vents = defaultdict(lambda: 0)
 
@@ -34,6 +24,16 @@ def part_1(data):
 			parse_vertical(vents, x1, x2, y1, y2)
 	
 	return len([True for x in vents.values() if x > 1])
+
+def parse_diagonal(vents, x1, x2, y1, y2):
+	x_step = 1 if x1 < x2 else -1
+	y_step = 1 if y1 < y2 else -1
+
+	for x, y in zip(
+		range(x1, x2 + x_step, x_step),
+		range(y1, y2 + y_step, y_step)
+		):
+		vents[(x, y)] += 1
 
 def part_2(data):
 	vents = defaultdict(lambda: 0)

@@ -5,12 +5,12 @@ def read_input(filename):
 	with open(filename, "r") as f:
 		return [int(x) for x in f.read().split(",")]
 
-def tri(n):
-	return n * (n + 1) / 2
-
 def part_1(data):
 	m = round(statistics.median(data))
 	return sum([abs(m - n) for n in data])
+
+def tri(n):
+	return n * (n + 1) / 2
 
 def part_2(data):
 	m = statistics.mean(data)
